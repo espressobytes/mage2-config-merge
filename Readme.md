@@ -5,6 +5,12 @@
 
 This module has the purpose to merge two config-files (in the form of config.php) to a new config-file 
 
+### Installation
+
+Installation via composer
+
+    composer require espressobytes/mergeconfigfiles
+
 ### Usage
 
 In Magento-Root, use:
