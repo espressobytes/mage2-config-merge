@@ -11,6 +11,7 @@ use Magento\Integration\Model\Oauth\Consumer;
 use Magento\Integration\Model\Oauth\ConsumerFactory;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\TokenFactory;
+use Magento\Setup\Console\Command\AbstractSetupCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,7 +23,7 @@ use Magento\Framework\Oauth\Helper\Oauth as OauthHelper;
 use Magento\Integration\Model\ResourceModel\Oauth\Token\Collection as TokenCollection;
 use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory as TokenCollectionFactory;
 
-class MergeConfigFilesCommand extends Command
+class MergeConfigFilesCommand extends AbstractSetupCommand
 {
 
     /** Command Name */
@@ -33,58 +34,6 @@ class MergeConfigFilesCommand extends Command
 
     /** @var OutputInterface */
     private $output;
-
-    /** @var ImportProcessorInterface */
-    private $importProcessor;
-
-    /** @var array */
-    private $readers;
-
-    /** @var FinderInterface */
-    private $finder;
-
-    /** @var IntegrationFactory */
-    private $integrationFactory;
-
-    /** @var IntegrationService */
-    private $integrationService;
-
-    /** @var ConsumerFactory */
-    private $consumerFactory;
-
-    /** @var OauthHelper */
-    private $oauthHelper;
-
-    /** @var TokenFactory */
-    private $tokenFactory;
-
-    /** @var TokenCollectionFactory */
-    private $tokenCollectionFactory;
-
-    public function __construct(
-        ImportProcessorInterface $importProcessor,
-        FinderInterface $finder,
-        IntegrationFactory $integrationFactory,
-        IntegrationServiceInterface $integrationService,
-        ConsumerFactory $consumerFactory,
-        OauthHelper $oauthHelper,
-        TokenFactory $tokenFactory,
-        TokenCollectionFactory $tokenCollectionFactory,
-        array $readers = []
-    )
-    {
-        $this->importProcessor = $importProcessor;
-        $this->readers = $readers;
-        $this->finder = $finder;
-        parent::__construct();
-
-        $this->integrationFactory = $integrationFactory;
-        $this->integrationService = $integrationService;
-        $this->consumerFactory = $consumerFactory;
-        $this->oauthHelper = $oauthHelper;
-        $this->tokenFactory = $tokenFactory;
-        $this->tokenCollectionFactory = $tokenCollectionFactory;
-    }
 
     /**
      * Configure the command
